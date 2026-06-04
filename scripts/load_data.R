@@ -1,5 +1,5 @@
 #load_data.R
-#Loads in the Visium HD data and saves as a .rds for downstream analysis.
+#Loads in the Visium HD data and saves it locally for downstream analysis.
 #
 #Dataset is pulled from: https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-mouse-intestine
 #
@@ -9,7 +9,9 @@
 library(here)
 library(Seurat)
 
-here::i_am("repo/scripts/load_data.R")
+here::i_am("spatial-practice/repo/scripts/load_data.R")
 localdir <- here("data")
 intestine <- Load10X_Spatial(data.dir = localdir, bin.size = c(8,16))
+
+#Save an RDS for downstream analysis
 saveRDS(intestine, file = here("rds_objects", "intestine.rds"))

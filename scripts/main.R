@@ -2,7 +2,7 @@
 #Runs the main analysis workflow
 #
 #Notes:
-#Top-level execution.
+#Top-level execution only; no reusable functions.
 
 #Load prerequisite libraries
 library(Seurat)
@@ -35,7 +35,7 @@ ggsave(filename = here("repo", "figures", "elbow_plot.pdf"),
        dpi = 300)
 
 #Cluster the data and project with UMAP:
-intestine <- cluster_umap(intestine, 18, 0.8)
+intestine <- cluster_umap(intestine, num_pca = 18, cluster_resolution = 0.5)
 saveRDS(intestine, file = here("rds_objects", "intestine_analysis.rds"))
 
 interaction_heatmap <- run_interaction_analysis(intestine, 4, 250, 100)

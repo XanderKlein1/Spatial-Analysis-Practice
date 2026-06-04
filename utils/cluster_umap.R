@@ -11,9 +11,9 @@
 
 library(Seurat)
 
-cluster_umap <- function(object, numPCA, clusterResolution) {
-  object <- FindNeighbors(object, dims = 1:numPCA)
-  object <- FindClusters(object, resolution = clusterResolution)
-  object <- RunUMAP(object, dims = 1:numPCA)
+cluster_umap <- function(object, num_pca, cluster_resolution) {
+  object <- FindNeighbors(object, dims = 1:num_pca)
+  object <- FindClusters(object, resolution = cluster_resolution)
+  object <- RunUMAP(object, dims = 1:num_pca)
   object
 }
